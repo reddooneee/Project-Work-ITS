@@ -34,7 +34,7 @@ public class CodiceFiscaleInverso {
 
     public CodiceFiscaleInverso(String codiceFiscale) {
         if (codiceFiscale == null || codiceFiscale.length() != 16) {
-            throw new IllegalArgumentException("Codice fiscale non valido nooooo");
+            throw new IllegalArgumentException("Codice fiscale non valido");
         }
 
         this.codiceFiscale = codiceFiscale;
@@ -90,13 +90,7 @@ public class CodiceFiscaleInverso {
             } else {
                 anno += 1900;
             }
-            /*
-             * return LocalDate.of(anno, mese, giorno);
-             * } catch (NumberFormatException e) {
-             * throw new NumberFormatException("Formato della data di nascita errato.");
-             * }
-             * }
-             */
+ 
             if (giorno > 31) {
                 giorno -= 40; // Sottrai 40 per ottenere il giorno corretto
             }
@@ -109,17 +103,6 @@ public class CodiceFiscaleInverso {
         }
     }
 
-    /*
-     * private String estraiSesso(String codice) {
-     * try {
-     * int giorno = Integer.parseInt(codice);
-     * 
-     * return (giorno > 40) ? "F" : "M";
-     * } catch (NumberFormatException e) {
-     * throw new IllegalArgumentException("Codice non valido per il sesso.");
-     * }
-     * }
-     */
     private String estraiSesso(String codice) {
         try {
             int giorno = Integer.parseInt(codice.substring(0, 2));
