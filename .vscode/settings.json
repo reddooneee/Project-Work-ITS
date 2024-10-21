@@ -1,7 +1,12 @@
 {
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "c:\\Users\\PC-A54\\Desktop\\mysql-connector-j-9.1.0.jar",
-        "c:\\Users\\A84\\Desktop\\mysql-connector-j-9.1.0.jar"
+        
+        "c:\\Users\\A84\\Downloads\\mysql-connector-j-9.1.0.jar", //Destinazione Driver JDBC Daniele
+        "c:\\Users\\PC-A54\\Downloads\\mysql-connector-j-9.1.0.jar", //Destinazione Driver JDBC Eduard
+        "c:\\Users\\A71\\Downloads\\mysql-connector-j-9.1.0.jar", //Destinazione Driver JDBC Micole
+        "c:\\Users\\PC-A59\\Downloads\\mysql-connector-j-9.1.0.jar", //Destinazione Driver JDBC Adriano
+        "c:\\Users\\MATTEOFESTUGATO\\Downloads\\mysql-connector-j-9.1.0.jar" //Destinazione Driver JDBC Matteo
+
     ]
 }
