@@ -34,7 +34,6 @@ public class ManageDB {
 
     }
 
-
     public String getCdbelfiore(String comune) {
         String cd = "";
         boolean a = false;
