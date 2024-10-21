@@ -123,8 +123,13 @@ public class CodiceFiscaleInverso {
         ControlloUltimaLettera controllo = new ControlloUltimaLettera();
 
         try {
-            char ultimaLettera = controllo.calcolaUltimaLettera(codiceFiscale.substring(0, 15));
-            return ultimaLettera;
+            char codice = controllo.calcolaUltimaLettera(codiceFiscale.substring(0, 15));
+            char ultimaLettera = codiceFiscale.substring(15, 16).charAt(0);
+            System.out.println(codice + ultimaLettera);
+            if(codice != ultimaLettera){
+                throw new IllegalArgumentException("Ultimo carattere del codice fiscale incorretto.");
+            }
+            return codice;
         } 
         catch (IllegalArgumentException e) {
             System.out.println("Errore nel calcolo del carattere di controllo: " + e.getMessage());
