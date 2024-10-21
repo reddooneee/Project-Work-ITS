@@ -14,6 +14,7 @@ public class CodiceFiscaleInverso {
     private LocalDate dataNascita;
     private String sesso;
     private String comune;
+    private char carattereControllo;
 
     private static final Map<Character, Integer> meseCodici = new HashMap<>();
 
@@ -45,6 +46,8 @@ public class CodiceFiscaleInverso {
         dataNascita = estraiDataNascita(codiceFiscale.substring(6, 11));
         sesso = estraiSesso(codiceFiscale.substring(9, 11));
         comune = estraiComune(codiceFiscale.substring(11, 15));
+        carattereControllo = calcolaCarattereControllo(codiceFiscale);
+;
     }
 
     private String estraiCognome(String codice) {
@@ -105,11 +108,24 @@ public class CodiceFiscaleInverso {
     }
 
     private String estraiComune(String codice) {
-String result = "";
+        String result = "";
         ManageDB manageDB = new ManageDB();
-       result = manageDB.getComune(codiceFiscale.substring(11, 15));
+        result = manageDB.getComune(codiceFiscale.substring(11, 15));
         return result;
     }
+
+    private static char calcolaCarattereControllo(String codiceFiscale) {
+        ControlloUltimaLettera controllo = new ControlloUltimaLettera();
+
+        try {
+            char ultimaLettera = controllo.calcolaUltimaLettera(codiceFiscale.substring(0, 15));
+            return ultimaLettera;
+        } 
+        catch (IllegalArgumentException e) {
+            System.out.println("Errore nel calcolo del carattere di controllo: " + e.getMessage());
+            throw e;
+        }
+    }  
 
     public String getCognome() {
         return cognome;
@@ -132,4 +148,7 @@ String result = "";
 
     }
 
+    public char getCalcolaCarattereControllo() {
+        return carattereControllo;
+    }
 }

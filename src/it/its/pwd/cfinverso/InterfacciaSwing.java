@@ -109,6 +109,7 @@ public class InterfacciaSwing extends JFrame {
             risultato.append("Data di Nascita: ").append(cfi.getDataNascita()).append("\n");
             risultato.append("Sesso: ").append(cfi.getSesso()).append("\n");
             risultato.append("Comune di Nascita: ").append(cfi.getComune()).append("\n");
+            risultato.append("Carattere di controllo: ").append(cfi.getCalcolaCarattereControllo()).append("\n");
 
             areaRisultato.setText(risultato.toString());
         } catch (IllegalArgumentException e) {

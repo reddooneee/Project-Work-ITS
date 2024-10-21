@@ -1,10 +1,11 @@
 package it.its.pwd.cfinverso;
 
+import java.util.Scanner;
 
 public class Main {
 	 public static void main(String[] args) {
-	  /*
-		 Scanner in = new Scanner(System.in);
+	  
+		/* Scanner in = new Scanner(System.in);
 		 String codiceFiscale = "";
 		 System.out.print("Inserisci il codice fiscale: ");
 		 codiceFiscale = in.nextLine().toUpperCase();
@@ -17,8 +18,8 @@ public class Main {
          System.out.println("Data di Nascita: " + cfi.getDataNascita());
          System.out.println("Sesso: " + cfi.getSesso());
          System.out.println("Comune di Nascita: " + cfi.getComune());
-	     */   
-
+		 System.out.println("Carattere di controllo: " + cfi.getCalcolaCarattereControllo());
+		*/
 		new InterfacciaSwing();
 		
 
