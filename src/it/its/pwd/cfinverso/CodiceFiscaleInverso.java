@@ -34,7 +34,7 @@ public class CodiceFiscaleInverso {
 
     public CodiceFiscaleInverso(String codiceFiscale) {
         if (codiceFiscale == null || codiceFiscale.length() != 16) {
-            throw new IllegalArgumentException("Codice fiscale non valido");
+            throw new IllegalArgumentException("Codice fiscale non valido nooooo");
         }
         this.codiceFiscale = codiceFiscale;
     }
