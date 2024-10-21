@@ -5,13 +5,16 @@ import java.util.Map;
 
 public class ControlloUltimaLettera{
 
+    private static Integer A;
+
     public ControlloUltimaLettera(){
 
     }
 
     private static final Map<Character, Integer> pari = new HashMap<>();
     private static final Map<Character, Integer> dispari = new HashMap<>();
-    private static final String lettere = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private static final Map<Integer, Character>  lettere = new HashMap<>();
+    //private static final String lettere = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     static {
         pari.put('0', 0);
@@ -24,22 +27,32 @@ public class ControlloUltimaLettera{
         pari.put('7', 7);
         pari.put('8', 8);
         pari.put('9', 9);
-        pari.put('A', 10);
-        pari.put('B', 11);
-        pari.put('C', 12);
-        pari.put('D', 13);
-        pari.put('E', 14);
-        pari.put('F', 15);
-        pari.put('G', 16);
-        pari.put('H', 17);
-        pari.put('I', 18);
-        pari.put('J', 19);
-        pari.put('K', 20);
-        pari.put('L', 21);
-        pari.put('M', 22);
-        pari.put('N', 23);
-        pari.put('O', 24);
-        pari.put('P', 25);
+        pari.put('A', 0);
+        pari.put('B', 1);
+        pari.put('C', 2);
+        pari.put('D', 3);
+        pari.put('E', 4);
+        pari.put('F', 5);
+        pari.put('G', 6);
+        pari.put('H', 7);
+        pari.put('I', 8);
+        pari.put('J', 9);
+        pari.put('K', 0);
+        pari.put('L', 1);
+        pari.put('M', 2);
+        pari.put('N', 3);
+        pari.put('O', 4);
+        pari.put('P', 5);
+        pari.put('Q', 6);
+        pari.put('R', 7);
+        pari.put('S', 8);
+        pari.put('T', 9);
+        pari.put('U', 0);
+        pari.put('V', 1);
+        pari.put('W', 2);
+        pari.put('X', 3);
+        pari.put('Y', 4);
+        pari.put('Z', 5);
     }
     
     static {
@@ -79,26 +92,29 @@ public class ControlloUltimaLettera{
         dispari.put('X', 7);
         dispari.put('Y', 9);
         dispari.put('Z', 13);
-    }  
+    }
+      
 
-    public char calcolaUltimaLettera(String codiceFiscale) {
-        codiceFiscale = codiceFiscale.toUpperCase();
-        
-        int somma = 0;
-
-        for (int i = 0; i < codiceFiscale.length(); i++) {
-            char carattere = codiceFiscale.charAt(i);
-            if (i % 2 == 0) { // Indice pari
-                somma += pari.getOrDefault(carattere, 0);
-            } 
-            else { // Indice dispari
-                somma += dispari.getOrDefault(carattere, 0);
+static{
+            for (int i = 0; i < 26; i++) {
+                lettere.put(i, (char) ('A' + i));
             }
         }
 
-        // Calcolo del modulo 26
-        int indiceLettera = somma % 26;
-        return lettere.charAt(indiceLettera);
-    }
+        public char calcolaUltimaLettera(String codiceFiscale) {
+            codiceFiscale = codiceFiscale.toUpperCase();
+            int somma = 0;
     
+            for (int i = 0; i < codiceFiscale.length() - 1; i++) {
+                char carattere = codiceFiscale.charAt(i);
+                if (i % 2 == 0) {
+                    somma += pari.getOrDefault(carattere, 0);
+                } else {
+                    somma += dispari.getOrDefault(carattere, 0);
+     }
+            }
+    
+            int indiceLettera = somma % 26;
+            return lettere.get(indiceLettera);
+        }
 }
