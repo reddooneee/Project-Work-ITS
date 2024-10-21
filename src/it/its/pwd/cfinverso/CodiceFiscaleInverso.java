@@ -1,12 +1,10 @@
 package it.its.pwd.cfinverso;
 
-
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
-
 
 public class CodiceFiscaleInverso {
     private String codiceFiscale;
@@ -37,6 +35,7 @@ public class CodiceFiscaleInverso {
         if (codiceFiscale == null || codiceFiscale.length() != 16) {
             throw new IllegalArgumentException("Codice fiscale non valido nooooo");
         }
+
         this.codiceFiscale = codiceFiscale;
     }
 
@@ -88,37 +87,39 @@ public class CodiceFiscaleInverso {
             } else {
                 anno += 1900;
             }
-/*
+            /*
+             * return LocalDate.of(anno, mese, giorno);
+             * } catch (NumberFormatException e) {
+             * throw new NumberFormatException("Formato della data di nascita errato.");
+             * }
+             * }
+             */
+            if (giorno > 31) {
+                giorno -= 40; // Sottrai 40 per ottenere il giorno corretto
+            }
+
             return LocalDate.of(anno, mese, giorno);
         } catch (NumberFormatException e) {
             throw new NumberFormatException("Formato della data di nascita errato.");
+        } catch (DateTimeException e) {
+            throw new DateTimeException("Data di nascita non valida: " + e.getMessage());
         }
-    }*/
-         if (giorno > 31) {
-                    giorno -= 40; // Sottrai 40 per ottenere il giorno corretto
-                }
+    }
 
-                return LocalDate.of(anno, mese, giorno);
-            } catch (NumberFormatException e) {
-                throw new NumberFormatException("Formato della data di nascita errato.");
-            } catch (DateTimeException e) {
-                throw new DateTimeException("Data di nascita non valida: " + e.getMessage());
-          }
-      }
-
-    /* 
+    /*
+     * private String estraiSesso(String codice) {
+     * try {
+     * int giorno = Integer.parseInt(codice);
+     * 
+     * return (giorno > 40) ? "F" : "M";
+     * } catch (NumberFormatException e) {
+     * throw new IllegalArgumentException("Codice non valido per il sesso.");
+     * }
+     * }
+     */
     private String estraiSesso(String codice) {
         try {
-            int giorno = Integer.parseInt(codice);
-    
-            return (giorno > 40) ? "F" : "M";
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Codice non valido per il sesso.");
-        }
-    }*/
-    private String estraiSesso(String codice) {
-        try {
-            int giorno = Integer.parseInt(codice.substring(0, 2)); 
+            int giorno = Integer.parseInt(codice.substring(0, 2));
             return (giorno > 31) ? "F" : "M";
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("Codice non valido per il sesso.");
@@ -126,9 +127,9 @@ public class CodiceFiscaleInverso {
     }
 
     private String estraiComune(String codice) {
-String result = "";
+        String result = "";
         ManageDB manageDB = new ManageDB();
-       result = manageDB.getComune(codiceFiscale.substring(11, 15));
+        result = manageDB.getComune(codiceFiscale.substring(11, 15));
         return result;
     }
 

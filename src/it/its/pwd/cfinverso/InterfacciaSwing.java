@@ -20,9 +20,9 @@ import javax.swing.border.LineBorder;
 
 public class InterfacciaSwing extends JFrame {
 
-	private static final long serialVersionUID = 1L;
-	private JTextField campoCodiceFiscale; //Campo per l'inserimento del codice fisale
-    private JTextArea areaRisultato;    //Area Dove ricevo il risultato del codice fiscale codificato
+    private static final long serialVersionUID = 1L;
+    private JTextField campoCodiceFiscale; // Campo per l'inserimento del codice fisale
+    private JTextArea areaRisultato; // Area Dove ricevo il risultato del codice fiscale codificato
 
     public InterfacciaSwing() {
         super("Decodifica Codice Fiscale");
@@ -35,7 +35,6 @@ public class InterfacciaSwing extends JFrame {
 
         JLabel labelCodiceFiscale = new JLabel("Codice Fiscale:");
         campoCodiceFiscale = new JTextField(30);
-        
 
         JButton pulsanteDecodifica = new JButton("Decodifica");
         pulsanteDecodifica.addActionListener(new ActionListener() {
@@ -45,22 +44,21 @@ public class InterfacciaSwing extends JFrame {
             }
         });
 
-        /*Prova Stile Bordo Pulsante
-        pulsanteDecodifica.setBorder(BorderFactory.createLineBorder(Color.black));
-        pulsanteDecodifica.setBorder(new round(10));
-        */
-
+        /*
+         * Prova Stile Bordo Pulsante
+         * pulsanteDecodifica.setBorder(BorderFactory.createLineBorder(Color.black));
+         * pulsanteDecodifica.setBorder(new round(10));
+         */
 
         labelCodiceFiscale.setForeground(Color.BLUE); // Set label text color to blue
         campoCodiceFiscale.setPreferredSize(new Dimension(250, 30)); // Set preferred size to make the field large
         //
-        //campoCodiceFiscale.setPreferredSize(44, 44);
-        
+        // campoCodiceFiscale.setPreferredSize(44, 44);
 
         // Imposta un bordo rotondo
         pulsanteDecodifica.setBorder(BorderFactory.createCompoundBorder(
-            new LineBorder(Color.BLACK, 2), // Bordo esterno
-            new EmptyBorder(5, 5, 5, 5) // Spazio interno
+                new LineBorder(Color.BLACK, 2), // Bordo esterno
+                new EmptyBorder(5, 5, 5, 5) // Spazio interno
         ));
 
         // Imposta il colore di sfondo trasparente
@@ -93,7 +91,7 @@ public class InterfacciaSwing extends JFrame {
     private void decodificaCodiceFiscale() {
         String codiceFiscale = campoCodiceFiscale.getText().toUpperCase();
 
-        if (codiceFiscale.length() != 16) {
+        if (codiceFiscale == null || codiceFiscale.length() != 16) {
             JOptionPane.showMessageDialog(this, "Codice fiscale non valido");
             return;
         }
@@ -116,8 +114,9 @@ public class InterfacciaSwing extends JFrame {
         }
     }
 
-
-   /*  public static void main(String[] args) {
-        new InterfacciaSwing();
-    }*/
+    /*
+     * public static void main(String[] args) {
+     * new InterfacciaSwing();
+     * }
+     */
 }
