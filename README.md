@@ -1,5 +1,5 @@
 Project Work ITS - Codice Fiscale Inverso
-- Daniele Coppa
+- Daniele Coppa @reddooneee
 - Adriano Incognito
 - Micole Santos
 - Matteo Festugato
