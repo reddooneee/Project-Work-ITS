@@ -125,7 +125,7 @@ public class CodiceFiscaleInverso {
         try {
             char codice = controllo.calcolaUltimaLettera(codiceFiscale.substring(0, 15));
             char ultimaLettera = codiceFiscale.substring(15, 16).charAt(0);
-            System.out.println(codice + ultimaLettera);
+          //  System.out.println(codice + ultimaLettera);
             if(codice != ultimaLettera){
                 throw new IllegalArgumentException("Ultimo carattere del codice fiscale incorretto.");
             }
